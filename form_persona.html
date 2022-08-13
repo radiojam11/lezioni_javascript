@@ -4,13 +4,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="src/style.css">
+    <link rel="stylesheet" href="src/css/style.css">
 </head>
 <body>
-
- 
+  
     <div class="row" id="form">
-      <div class="row" id="form_title"><p>Riempi i Campi per fare l'inserimento</p></div>
+      <div class="row"><h1>Inserisci una nuova Persona in archivio</h1></div>
+      <div class="row" id="form_title">Riempi i Campi per fare l'inserimento</div>
       <div class="row"><input type = "text" name="nome" placeholder="nome"></div>
       <div class="row"><input type = "text" name="cognome" placeholder="cognome"></div>
       <div class="row"><input type = "text" name="id" placeholder="id"></div>
@@ -30,15 +30,18 @@
           <input type="checkbox" id="scelta_c" name="criminale">
           <label for="scelta_c">Criminale</label>
         </div>
+        <div class="row"><input type = "text" name="data_in" placeholder="data carcerazione"></div>
+        <div class="row"><input type = "text" name="data_out" placeholder="data scarcerazione"></div>
+        <div class="row"><input type = "text" name="crime" placeholder="crimine commesso"></div>
         
       </fieldset>
-      <!--
-      <div class="row" id="bottone"><button>Aggiungi persona</button></div>
-        -->
-        <input type="button" value="Invia" onClick="Modulo()">
-    </div>
+      <input type="button" value="Invia" onClick="Modulo()">
 
-    <script src="src/script5.js"></script>
+  </div>
+  <input type="button" value="Stampa Fascicoli" onClick="stampaFascicoli()">
+    
+
+    <script src="src/carcere.js"></script>
 
 </body>
 </html>
