@@ -9,7 +9,7 @@
 <body>
   
     <div class="row" id="form">
-      <div class="row"><h1>Inserisci una nuova Persona in archivio</h1></div>
+      <div class="row"><h1>Assumi una nuova Guardia</h1></div>
       <div class="row" id="form_title">Riempi i Campi per fare l'inserimento</div>
       <div class="row"><input type = "text" name="nome" placeholder="nome"></div>
       <div class="row"><input type = "text" name="cognome" placeholder="cognome"></div>
@@ -18,21 +18,13 @@
       <div class="row"><input type = "text" name="indirizzo" placeholder="indirizzo"></div>
     
       <fieldset>
-        <legend>Seleziona se Guardia o Ladro:</legend>
+        <legend>Assumi una Guardia</legend>
     
         <div>
           <input type="checkbox" id="scelta_g" name="guardia"
                  checked>
           <label for="scelta_g">Guardia</label>
         </div>
-    
-        <div>
-          <input type="checkbox" id="scelta_c" name="criminale">
-          <label for="scelta_c">Criminale</label>
-        </div>
-        <div class="row"><input type = "text" name="data_in" placeholder="data carcerazione"></div>
-        <div class="row"><input type = "text" name="data_out" placeholder="data scarcerazione"></div>
-        <div class="row"><input type = "text" name="crime" placeholder="crimine commesso"></div>
         
       </fieldset>
       <input type="button" value="Invia" onClick="Modulo()">

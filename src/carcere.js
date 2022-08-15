@@ -33,20 +33,21 @@ arr_fascicoli = [];
 
 
 class Persona {
-	constructor(nome, cognome, id, email, indirizzo, guardia = false, criminale= false, data_in, data_out, crime ) {
+	constructor(nome, cognome, id, email, indirizzo,  criminale= false, data_in, data_out, crime ) {
   this.nome = nome;
   this.cognome = cognome;
   this.id = id;
-  this.criminale = criminale;
-  this.guardia = guardia;
   this.email = email;
   this.indirizzo = indirizzo;
+  this.note="";
+
+  this.criminale = criminale;
   this.data_in = data_in;
   this.data_out = data_out;
   this.crime = crime;
   this.fedinaPenale = [];
 	} 
-	anagrafica() {
+	anagrafica() {   // da sistemare per cambio variabili
 		return `{
             nome = ${this.nome}; 
             cognome = ${this.cognome}; 
@@ -68,6 +69,11 @@ class Persona {
   }
 }
 
+class Guardia extends Persona{
+  constructor(guardia = false){
+    this.guardia = guardia;
+  }
+}
 
 class Fascicolo {
 	constructor(id_criminale, data_car, data_scar, crimine) {
@@ -95,7 +101,9 @@ function Modulo() {
   var email = document.getElementsByName("email")[0].value;
   var indirizzo = document.getElementsByName("indirizzo")[0].value;
   var guardia = document.getElementsByName("guardia")[0].checked;
-  var criminale = document.getElementsByName("criminale")[0].checked;
+  if (document.getElementsByName("criminale"[0])){
+    var criminale = document.getElementsByName("criminale")[0].checked;
+  }
   var data_in = document.getElementsByName("data_in")[0].value;
   var data_out = document.getElementsByName("data_out")[0].value;
   var crime = document.getElementsByName("crime")[0].value;
@@ -120,11 +128,12 @@ function creaFascicolo(id, data_in, data_out, crime){
  }
 
 
-
+/*
 if(document.getElementsByName("criminale")[0].checked){
   console.log("spuntato")
 
 }
+*/
 
 function stampaFascicoli(){
   console.log("sono entrato in stampa Fascicoli")
