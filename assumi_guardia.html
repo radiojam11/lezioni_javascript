@@ -9,6 +9,7 @@
 <body>
   
     <div class="row" id="form">
+
       <div class="row"><h1>Assumi una nuova Guardia</h1></div>
       <div class="row" id="form_title">Riempi i Campi per fare l'inserimento</div>
       <div class="row"><input type = "text" name="nome" placeholder="nome"></div>
@@ -18,20 +19,18 @@
       <div class="row"><input type = "text" name="indirizzo" placeholder="indirizzo"></div>
     
       <fieldset>
-        <legend>Assumi una Guardia</legend>
+        <legend>Assunzione nuova Guardia</legend>
     
         <div>
-          <input type="checkbox" id="scelta_g" name="guardia"
-                 checked>
+          <input type="checkbox" id="scelta_g" name="guardia" checked>
           <label for="scelta_g">Guardia</label>
         </div>
-        
+        <div class="row"><input type = "text" name="note" placeholder="eventuali note"></div>
       </fieldset>
-      <input type="button" value="Invia" onClick="Modulo()">
 
-  </div>
-  <input type="button" value="Stampa Fascicoli" onClick="stampaFascicoli()">
-    
+      <input type="button" value="Invia" onClick="moduloGuardia()">
+
+    </div>
 
     <script src="src/carcere.js"></script>
 

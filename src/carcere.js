@@ -33,55 +33,50 @@ arr_fascicoli = [];
 
 
 class Persona {
-	constructor(nome, cognome, id, email, indirizzo,  criminale= false, data_in, data_out, crime ) {
+	constructor(nome, cognome, id, email, indirizzo) {
   this.nome = nome;
   this.cognome = cognome;
   this.id = id;
   this.email = email;
   this.indirizzo = indirizzo;
-  this.note="";
-
-  this.criminale = criminale;
-  this.data_in = data_in;
-  this.data_out = data_out;
-  this.crime = crime;
-  this.fedinaPenale = [];
-	} 
-	anagrafica() {   // da sistemare per cambio variabili
+  } 
+	
+  anagrafica() {   // da sistemare per cambio variabili
 		return `{
             nome = ${this.nome}; 
             cognome = ${this.cognome}; 
             id = ${this.identificativo}; 
-            criminale = ${this.criminale}; 
-            guardia = ${this.guardia}; 
             email = ${this.email}; 
             indirizzo = ${this.indirizzo};
-            data_in = ${this.data_in};
-            data_out = ${this.data_out};
-            crime = ${this.crime}; 
           }`;
 	}
-  finePena(finepena=true) {
-    this.criminale = !finepena;
-  }
-  sporcaFedina(fedina) {
-    this.fedinaPenale.push(fedina)
-  }
 }
 
 class Guardia extends Persona{
-  constructor(guardia = false){
+  constructor(guardia = false, note){
     this.guardia = guardia;
+    this.note = note;
+  }
+}
+
+class Criminale extends Persona{
+  constructor(criminale= false, data_in, data_out, crime ){
+    this.criminale = criminale;
+    this.data_in = data_in;
+    this.data_out = data_out;
+    this.crime = crime;
+    this.fedinaPenale = [];
+
   }
 }
 
 class Fascicolo {
-	constructor(id_criminale, data_car, data_scar, crimine) {
+	constructor(id_criminale, data_car, data_scar, crimine, note) {
 		this.id_criminale = id_criminale;
 		this.data_car = data_car;
     this.data_scar = data_scar;
     this.crimine = crimine;
-		this.note = "";
+		this.note = note;
 	} 
 	anagrafica() {
 		return `{
@@ -94,31 +89,45 @@ class Fascicolo {
 }
 
 
-function Modulo() {
+function moduloCriminale() {
+  var nome = document.getElementsByName("nome")[0].value;
+  var cognome = document.getElementsByName("cognome")[0].value;
+  var id = document.getElementsByName("id")[0].value;
+  var email = document.getElementsByName("email")[0].value;
+  var indirizzo = document.getElementsByName("indirizzo")[0].value;
+  var criminale = document.getElementsByName("criminale")[0].checked;
+  var data_in = document.getElementsByName("data_in")[0].value;
+  var data_out = document.getElementsByName("data_out")[0].value;
+  var crime = document.getElementsByName("crime")[0].value;
+  var creaFasc = document.getElementsByName("creaFasc")[0].checked;
+  console.log(nome, " ", cognome, id, email, indirizzo, criminale, data_in, data_out, crime);
+  
+  const individuo = new Persona(nome, cognome, id, email, indirizzo, criminale, data_in, data_out, crime);
+  
+  arr_detenuti.push(individuo); 
+  console.log("Inserimento Criminale avvenuto con successo")
+  if (creaFasc){
+    creaFascicolo(id, data_in, data_out, crime);
+    console.log("Creato Fascicolo su immissione Criminale")
+  }
+}
+
+function moduloGuardia() {
   var nome = document.getElementsByName("nome")[0].value;
   var cognome = document.getElementsByName("cognome")[0].value;
   var id = document.getElementsByName("id")[0].value;
   var email = document.getElementsByName("email")[0].value;
   var indirizzo = document.getElementsByName("indirizzo")[0].value;
   var guardia = document.getElementsByName("guardia")[0].checked;
-  if (document.getElementsByName("criminale"[0])){
-    var criminale = document.getElementsByName("criminale")[0].checked;
-  }
-  var data_in = document.getElementsByName("data_in")[0].value;
-  var data_out = document.getElementsByName("data_out")[0].value;
-  var crime = document.getElementsByName("crime")[0].value;
-  console.log(nome, " ", cognome, id, email, indirizzo, guardia, criminale, data_in, data_out, crime)
+  var note  = document.getElementsByName("note")[0].value;
+  console.log(nome, " ", cognome, id, email, indirizzo, guardia, note)
   
-  const individuo = new Persona(nome, cognome, id, email, indirizzo, guardia, criminale, data_in, data_out, crime)
-  //individuo.sporcaFedina(`{id=${id}; data_in=${data_in}; data_out=${data_out}; crime=${crime}}`)
-  
-  if (individuo.guardia){
-    arr_guardie.push(individuo);
-  }else{
-    arr_detenuti.push(individuo); 
-    creaFascicolo(id, data_in, data_out, crime);
-  }
+  const individuo = new Persona(nome, cognome, id, email, indirizzo, guardia, note);
+ 
+  arr_guardie.push(individuo);
 
+  console.log("Inserimento Guardia completato con successo")
+ 
 }
 
 function creaFascicolo(id, data_in, data_out, crime){
@@ -138,6 +147,5 @@ if(document.getElementsByName("criminale")[0].checked){
 function stampaFascicoli(){
   console.log("sono entrato in stampa Fascicoli")
   
-  console.log(arr_fascicoli[0].anagrafica().replaceAll("\n      ", ""));
-  
+  console.log(arr_fascicoli[0].anagrafica().replaceAll("\n      ", ""))
 }
