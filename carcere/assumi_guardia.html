@@ -1,0 +1,48 @@
+
+<!doctype html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../src/css/style.css">
+</head>
+<body>
+  
+    <div class="row" id="form">
+
+      <div class="row"><h1>Assumi una nuova Guardia</h1></div>
+      <div class="row" id="form_title">Riempi i Campi per fare l'inserimento</div>
+      <div class="row"><input type = "text" name="nome" placeholder="nome"></div>
+      <div class="row"><input type = "text" name="cognome" placeholder="cognome"></div>
+      <div class="row"><input type = "text" name="id" placeholder="id"></div>
+      <div class="row"><input type = "text" name="email" placeholder="email"></div>
+      <div class="row"><input type = "text" name="indirizzo" placeholder="indirizzo"></div>
+    
+      <fieldset>
+        <legend>Assunzione nuova Guardia</legend>
+    
+        <div>
+          <input type="checkbox" id="scelta_g" name="guardia" checked>
+          <label for="scelta_g">Guardia</label>
+        </div>
+        <div class="row"><input type = "text" name="note" placeholder="eventuali note"></div>
+      </fieldset>
+
+      <input type="button" value="Invia" onClick="moduloGuardia()">
+
+    </div>
+
+    <script src="../src/carcere.js"></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
