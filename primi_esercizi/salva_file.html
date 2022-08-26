@@ -1,0 +1,43 @@
+
+<!DOCTYPE HTML>
+<html lang="it">
+<head>
+<title>Esempio</title>
+<meta charset="utf-8">
+</head>
+<body>
+<label>Nome File: <input id="inp-nome-file"></label>
+<hr>
+<label>Testo: <br><textarea id="txt-contenuto"></textarea></label>
+<hr>
+<input id="btn-salva" type="button" value="Salva">
+<script>
+
+function salvaFileTesto(nomeFile, contenuto) {
+    var file = new Blob(['\ufeff' + contenuto], { type: 'text/plain;charset=utf-8' });
+    if (window.navigator.msSaveOrOpenBlob) // IE10+
+        {window.navigator.msSaveOrOpenBlob(file, filename);}
+    else {
+        var a = document.createElement('a'),
+        url = URL.createObjectURL(file);
+        a.href = url;
+        a.download = nomeFile;
+        document.body.appendChild(a);
+        a.click();
+        setTimeout(function() {
+        document.body.removeChild(a);
+        window.URL.revokeObjectURL(url);
+        }, 0);
+    }
+}
+
+document.getElementById('btn-salva').onclick = function(){
+    salvaFileTesto(
+        document.getElementById('inp-nome-file').value
+        ,document.getElementById('txt-contenuto').value
+    )
+}
+
+</script>
+</body>
+</html>

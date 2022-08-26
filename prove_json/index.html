@@ -20,10 +20,12 @@
     //alla fine del caricamento chiama la funzione
     request.onload = function () {
         const classe = request.response;
-        for (let i = 0; i < 2; i++){
-            console.log(classe.insegnanti[i].nome)
+        for (let i = 0; i < classe.insegnanti.length; i++){
+            console.log("insegnante " + classe.insegnanti[i].nome);
         }
-        console.log(classe.insegnanti[0].nome);
+        for (let i = 0; i < classe.alunni.length; i++){
+            console.log("alunno " + classe.alunni[i].nome);
+        }
 
     }
 </script>
