@@ -1,0 +1,34 @@
+{
+    "nome": "A3",
+    "scuola": "Scuola Elementare Miao",
+    "insegnanti": [
+        {
+            "nome": "Anna",
+            "cognome": "Rossi",
+            "materie": ["Storia", "Ïtaliano", "Diritto"]
+        },
+        {
+            "nome": "Giulia",
+            "cognome": "Verdi",
+            "materie": ["Matematica", "Ginnastica", "Geografia"]
+        }
+    ],
+    "alunni": [
+        {
+            "nome": "Marco",
+            "cognome": "Zizzi"
+        },
+        {
+            "nome": "Filippo",
+            "cognome": "Nisi"
+        },
+        {
+            "nome": "Arturo",
+            "cognome": "Ghiozzi"
+        }
+    ],
+    "orari": {
+        "mattino": ["Storia", "Matematica"],
+        "pomeriggio": ["Italiano", "Geografia"]
+    }
+}

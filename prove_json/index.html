@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="src/css/style.css">
+</head>
+<body>
+
+<script>
+    // creo l'oggetto request
+    let requestURL = './classe.json';
+    let request = new XMLHttpRequest();
+    // apro una connessione faccio una GET al file 
+    request.open('GET', requestURL);
+    // comunico al mio oggetto che si tratta di un json
+    request.responseType = 'json';
+    // inizio la chiamata al file
+    request.send();
+    //alla fine del caricamento chiama la funzione
+    request.onload = function () {
+        const classe = request.response;
+        for (let i = 0; i < 2; i++){
+            console.log(classe.insegnanti[i].nome)
+        }
+        console.log(classe.insegnanti[0].nome);
+
+    }
+</script>
+
+
+    
+</body>
+</html>
+
